@@ -1,4 +1,6 @@
-export default function SSR({ formattedDate }) {
+import Link from "next/link";
+
+export default function SSR({ formattedDate }: FormattedDate) {
   return (
     <>
       <h1>Server-side rendered page</h1>
@@ -6,7 +8,7 @@ export default function SSR({ formattedDate }) {
         This page is server-side rendered. It was rendered on {formattedDate}.
       </p>
       <p>
-        <a href="/"> View a static page.</a>
+        <Link href="/">View a static page.</Link>
       </p>
     </>
   )
@@ -22,4 +24,12 @@ export function getServerSideProps() {
     `SSR ran on ${formattedDate}. This will be logged in CloudWatch.`
   );
   return { props: { formattedDate }}
+}
+
+class FormattedDate {
+  formattedDate: string;
+
+  constructor(date: string) {
+    this.formattedDate = date;
+  }
 }
