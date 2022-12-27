@@ -12,7 +12,7 @@ export default function SSR({ formattedDate }: FormattedDate) {
       </p>
     </>
   )
-}
+};
 
 export function getServerSideProps() {
   const renderDate = Date.now();
@@ -24,7 +24,7 @@ export function getServerSideProps() {
     `SSR ran on ${formattedDate}. This will be logged in CloudWatch.`
   );
   return { props: { formattedDate }}
-}
+};
 
 class FormattedDate {
   formattedDate: string;
@@ -32,4 +32,4 @@ class FormattedDate {
   constructor(date: string) {
     this.formattedDate = date;
   }
-}
+};
